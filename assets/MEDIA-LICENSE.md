@@ -15,7 +15,7 @@ written permission.
 
 ## Not covered by this license (third-party, owned by others)
 - `strands-logo.png` — Strands.
-- `bedrock-logo.png` — Amazon Bedrock (AWS service icon).
+- `bedrock-logo.svg` — Amazon Bedrock (AWS service icon).
 - `nasa-logo.svg` — NASA (public-domain insignia; usage per NASA guidelines).
 - `deepracer-logo.png`, `gif_phase1demo.gif` — from
   [strands-agentic-deepracer](https://github.com/Vivek0712/strands-agentic-deepracer).

@@ -1,7 +1,7 @@
 <div align="center">
 
 <img src="assets/strands-logo.png" height="46" alt="Strands"/>&nbsp;&nbsp;&nbsp;
-<img src="assets/bedrock-logo.png" height="44" alt="Amazon Bedrock"/>&nbsp;&nbsp;&nbsp;
+<img src="assets/bedrock-logo.svg" height="44" alt="Amazon Bedrock"/>&nbsp;&nbsp;&nbsp;
 <img src="assets/nasa-logo.svg" height="30" alt="NASA"/>
 
 # 🪐 Mars Curiosity Rover Agent
@@ -16,12 +16,15 @@ AWS Bedrock.
 
 <sub>Strands Agents × Amazon Nova × NASA · <code>strands-robots-ros2</code></sub>
 
+[![Built on Strands Robots](https://img.shields.io/badge/built%20on-Strands%20Robots-e07a3f)](https://github.com/strands-labs/robots)
 [![Strands Agents](https://img.shields.io/badge/Strands-Agents-0969da)](https://github.com/strands-agents/sdk-python)
 [![Amazon Nova](https://img.shields.io/badge/Amazon%20Nova-on%20Bedrock-FF9900?logo=amazonwebservices&logoColor=white)](https://aws.amazon.com/ai/generative-ai/nova/)
 [![ROS](https://img.shields.io/badge/ROS-rosbridge-22314E?logo=ros&logoColor=white)](http://wiki.ros.org/rosbridge_suite)
 [![License](https://img.shields.io/badge/License-Apache--2.0-green)](LICENSE)
 
 *Believed to be the first **Amazon Nova**–driven **NASA Curiosity** Mars rover — in a high-fidelity Gazebo simulation built on real NASA/JPL rover meshes and Martian terrain, with full **autonomous Nav2 navigation + live SLAM mapping** on ROS2 rovers.*
+
+<sub>🧬 Built on the foundation of <a href="https://github.com/strands-labs/robots"><b>Strands Robots</b></a> (Amazon's physical-AI agent framework) — extended here for mobile, multi-runtime robots.</sub>
 
 </div>
 
@@ -162,7 +165,7 @@ speaks the same `{linear_x, angular_z}` move API — the runtime handles the wir
 ## Credits & sources
 
 - **[Strands Agents SDK](https://github.com/strands-agents/sdk-python)** — the agent runtime.
-- **[Strands Robots](https://github.com/strands-labs/robots)** (Apache-2.0, Amazon) — the framework this extends; structure/conventions adapted from its README.
+- **[Strands Robots](https://github.com/strands-labs/robots)** (Apache-2.0, Amazon) — **the foundation this builds on**. The `Robot` AgentTool, registry, and runtime conventions are derived and extended from it; this project is its mobile / multi-runtime arm.
 - **[Amazon Nova](https://aws.amazon.com/ai/generative-ai/nova/)** on Amazon Bedrock — the model driving the robots.
 - **NASA / JPL** — open-source Curiosity rover 3D models, via the **[mark-gl/curiosity_mars_rover_ws](https://github.com/mark-gl/curiosity_mars_rover_ws)** Gazebo sim.
 - **[strands-agentic-deepracer](https://github.com/Vivek0712/strands-agentic-deepracer)** — the DeepRacer agent (logo + demo GIF from that repo).
