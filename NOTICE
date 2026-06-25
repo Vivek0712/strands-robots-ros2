@@ -1,0 +1,53 @@
+Strands Robots — Curiosity Rover Agent (strands-robots-ros2)
+Copyright (c) 2026 Vivek Raja. All rights reserved where applicable.
+Author / licensing contact: Vivek Raja <vivekraja98@gmail.com> · https://github.com/Vivek0712
+
+================================================================================
+ATTRIBUTION IS REQUIRED
+================================================================================
+Any use, fork, redistribution, demonstration, publication, or derivative of
+this project — in whole or in part, including its code, media (GIFs,
+screenshots), architecture, or README content — MUST visibly credit:
+
+    "Strands Robots — Curiosity Rover Agent" by Vivek Raja
+    https://github.com/Vivek0712/strands-robots-ros2
+
+and cite this repository (see CITATION.cff).
+
+================================================================================
+LICENSING (per-component)
+================================================================================
+This repository combines components under different licenses. See LICENSE.
+
+1. Components DERIVED from upstream `strands-robots` (Apache-2.0, Amazon):
+   - src/strands_robots_ros2/runtime/  (except runtime/rosbridge.py)
+   - src/strands_robots_ros2/registry/
+   - src/strands_robots_ros2/robot.py
+   - src/strands_robots_ros2/utils.py
+   Licensed: Apache License 2.0. Upstream: https://github.com/strands-labs/robots
+
+2. ORIGINAL components authored by Vivek Raja:
+   - src/strands_robots_ros2/runtime/rosbridge.py
+   - src/strands_robots_ros2/registry/robots.json (the `curiosity` entry)
+   - examples/  (including examples/web/)
+   Licensed: PolyForm Noncommercial License 1.0.0.
+   Commercial use requires the author's prior written permission.
+   Contact: Vivek Raja <vivekraja98@gmail.com> · https://github.com/Vivek0712
+
+3. MEDIA (assets/curiosity_rover.gif, assets/rover.png, and original imagery):
+   Licensed: Creative Commons Attribution-NonCommercial-NoDerivatives 4.0
+   (CC BY-NC-ND 4.0). See assets/MEDIA-LICENSE.md.
+
+================================================================================
+THIRD-PARTY MARKS & ASSETS (not owned by this project)
+================================================================================
+- NASA / JPL-Caltech: Curiosity rover models and the NASA logo.
+- Amazon / AWS: Amazon Nova, Bedrock, AWS DeepRacer, and the AWS logo.
+- Strands: the Strands Agents SDK and Strands Robots logo.
+- mark-gl/curiosity_mars_rover_ws: the Curiosity Gazebo simulation (third-party).
+- strands-agentic-deepracer (Vivek Raja): DeepRacer logo and demo GIF.
+All trademarks and logos belong to their respective owners and are used for
+identification and attribution only.
+
+"Powered by Strands Robots — customized by Vivek Raja for Mars Rover Agents and
+other ROS2 robots."

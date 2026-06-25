@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+title: "Strands Robots — Curiosity Rover Agent (strands-robots-ros2)"
+message: >-
+  If you use this software, its ideas, or its media, you MUST cite this
+  repository and credit the author. Commercial use of the original
+  (non-Apache) components requires the author's written permission.
+type: software
+authors:
+  - family-names: Raja
+    given-names: Vivek
+    email: vivekraja98@gmail.com
+    website: "https://github.com/Vivek0712"
+repository-code: "https://github.com/Vivek0712/strands-robots-ros2"
+url: "https://github.com/Vivek0712/strands-robots-ros2"
+contact:
+  - name: "Vivek Raja"
+    email: vivekraja98@gmail.com
+abstract: >-
+  Natural-language control of a NASA Curiosity Mars rover (and AWS DeepRacer)
+  with Amazon Nova on the Strands Agents SDK — a mobile-robot RuntimeAdapter
+  (ROS2 / ROS1-rosbridge / HTTP) extension for strands-robots.
+keywords:
+  - strands-agents
+  - amazon-nova
+  - ros2
+  - rosbridge
+  - mars-rover
+  - curiosity
+  - aws-deepracer
+license: Apache-2.0 AND PolyForm-Noncommercial-1.0.0
+year: 2026

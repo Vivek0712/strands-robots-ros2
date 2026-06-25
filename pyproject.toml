@@ -1,0 +1,37 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "strands-robots-ros2"
+version = "0.1.0"
+description = "ROS2 / HTTP / rosbridge mobile-robot runtimes for Strands Agents — extension for strands-robots"
+readme = "README.md"
+requires-python = ">=3.10"
+# Multi-licensed: Apache-2.0 for upstream-derived components; PolyForm
+# Noncommercial 1.0.0 for original components; CC BY-NC-ND 4.0 for media.
+# See NOTICE, LICENSE, LICENSE-NONCOMMERCIAL.md. Attribution required.
+license = { text = "Apache-2.0 AND PolyForm-Noncommercial-1.0.0" }
+keywords = ["strands", "robots", "ros2", "rosbridge", "nav2", "mobile-robot", "agent"]
+dependencies = [
+  "strands-agents>=1.0.0,<2.0.0",
+]
+
+[project.optional-dependencies]
+# rclpy is provided by the ROS2 environment, NOT pip.
+rosbridge = ["roslibpy>=1.5"]
+http = ["requests"]
+# Upstream strands-robots — only needed for VLA policies + sim features the
+# mobile runtimes optionally delegate to. Not required to drive robots.
+upstream = ["strands-robots>=0.4"]
+dev = ["pytest"]
+
+[project.urls]
+Homepage = "https://github.com/strands-labs/robots"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/strands_robots_ros2"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"src/strands_robots_ros2/registry/robots.json" = "strands_robots_ros2/registry/robots.json"
+"src/strands_robots_ros2/registry/policies.json" = "strands_robots_ros2/registry/policies.json"

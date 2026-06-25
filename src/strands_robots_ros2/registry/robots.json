@@ -1,0 +1,205 @@
+{
+  "robots": {
+    "aws_deepracer": {
+      "description": "AWS DeepRacer Evo (1/18 scale Ackermann ROS2 car, stereo cameras + LiDAR)",
+      "category": "mobile_ros2",
+      "runtime": "ros2",
+      "drive_type": "ackermann",
+      "wheelbase_m": 0.164,
+      "ros2": {
+        "namespace": "",
+        "command_interfaces": [
+          {
+            "action_field": "twist",
+            "preferred": {
+              "topic": "/webserver_pkg/manual_drive",
+              "type": "deepracer_interfaces_pkg/msg/ServoCtrlMsg",
+              "qos": "command",
+              "translator": "strands_robots.runtime.ros2.translators.deepracer:TwistToServoCtrl"
+            }
+          }
+        ],
+        "observation_topics": [
+          {
+            "name": "image_left",
+            "topic": "/camera_pkg/display_mjpeg",
+            "type": "sensor_msgs/msg/Image",
+            "qos": "sensor"
+          },
+          {
+            "name": "scan",
+            "topic": "/rplidar_ros/scan",
+            "type": "sensor_msgs/msg/LaserScan",
+            "qos": "sensor"
+          },
+          {
+            "name": "tf",
+            "topic": "/tf",
+            "type": "tf2_msgs/msg/TFMessage",
+            "qos": "default"
+          },
+          {
+            "name": "tf_static",
+            "topic": "/tf_static",
+            "type": "tf2_msgs/msg/TFMessage",
+            "qos": "default"
+          }
+        ],
+        "vehicle_state_service": "/ctrl_pkg/vehicle_state",
+        "vehicle_state_service_type": "deepracer_interfaces_pkg/srv/ActiveStateSrv",
+        "vehicle_state_target_mode": 1,
+        "enable_state_service": "/ctrl_pkg/enable_state",
+        "enable_state_service_type": "deepracer_interfaces_pkg/srv/EnableStateSrv"
+      },
+      "safety_limits": {
+        "max_linear_x": 1.5,
+        "max_angular_z": 3.0,
+        "max_steering_rad": 0.5236,
+        "max_duration_per_command": 10.0,
+        "command_watchdog_timeout": 0.4
+      },
+      "command_rate_hz": 20.0,
+      "capabilities": [
+        "velocity_control"
+      ],
+      "aliases": [
+        "deepracer",
+        "deepracer_evo",
+        "bumblebee"
+      ]
+    },
+    "aws_deepracer_http": {
+      "description": "AWS DeepRacer Evo via the AWS console HTTP API (CSRF + JSON PUT). Wraps the community aws_deepracer_control_v2 client.",
+      "category": "mobile_http",
+      "runtime": "deepracer_v2",
+      "drive_type": "ackermann",
+      "wheelbase_m": 0.164,
+      "deepracer_v2": {
+        "host_env": [
+          "DEEPRACER_HOST",
+          "DEEPRACER_IP"
+        ],
+        "password_env": "DEEPRACER_PASSWORD",
+        "verify_ssl": false,
+        "max_speed": 1.0,
+        "request_timeout_s": 10.0
+      },
+      "safety_limits": {
+        "max_linear_x": 1.5,
+        "max_angular_z": 3.0,
+        "max_steering_rad": 0.5236,
+        "max_duration_per_command": 10.0,
+        "command_watchdog_timeout": 0.4
+      },
+      "command_rate_hz": 20.0,
+      "capabilities": [
+        "velocity_control"
+      ],
+      "aliases": [
+        "deepracer_http",
+        "deepracer_remote",
+        "deepracer_v2"
+      ]
+    },
+    "turtlebot4": {
+      "description": "iRobot TurtleBot 4 (differential-drive ROS2 mobile, RPLiDAR + OAK-D)",
+      "category": "mobile_ros2",
+      "runtime": "ros2",
+      "drive_type": "differential",
+      "wheel_separation_m": 0.233,
+      "wheel_radius_m": 0.036,
+      "ros2": {
+        "namespace": "",
+        "command_interfaces": [
+          {
+            "action_field": "twist",
+            "preferred": {
+              "topic": "/cmd_vel",
+              "type": "geometry_msgs/msg/Twist",
+              "qos": "command"
+            }
+          }
+        ],
+        "observation_topics": [
+          {
+            "name": "scan",
+            "topic": "/scan",
+            "type": "sensor_msgs/msg/LaserScan",
+            "qos": "sensor"
+          },
+          {
+            "name": "odom",
+            "topic": "/odom",
+            "type": "nav_msgs/msg/Odometry",
+            "qos": "default"
+          },
+          {
+            "name": "tf",
+            "topic": "/tf",
+            "type": "tf2_msgs/msg/TFMessage",
+            "qos": "default"
+          },
+          {
+            "name": "tf_static",
+            "topic": "/tf_static",
+            "type": "tf2_msgs/msg/TFMessage",
+            "qos": "tf_static"
+          }
+        ]
+      },
+      "safety_limits": {
+        "max_linear_x": 0.46,
+        "max_angular_z": 1.9,
+        "max_duration_per_command": 30.0,
+        "command_watchdog_timeout": 0.5
+      },
+      "command_rate_hz": 20.0,
+      "capabilities": [
+        "velocity_control",
+        "navigation",
+        "slam"
+      ],
+      "aliases": [
+        "tb4",
+        "turtlebot_4"
+      ]
+    },
+    "curiosity": {
+      "description": "NASA Curiosity Mars rover (6-wheel rocker-bogie, Ackermann) in Gazebo, driven over rosbridge",
+      "category": "mobile_rosbridge",
+      "runtime": "rosbridge",
+      "drive_type": "ackermann",
+      "command_rate_hz": 10.0,
+      "rosbridge": {
+        "host": "localhost",
+        "port": 9090,
+        "command_topic": {
+          "topic": "/curiosity_mars_rover/ackermann_drive_controller/cmd_vel",
+          "type": "geometry_msgs/Twist"
+        },
+        "observation_topics": [
+          {
+            "name": "odom",
+            "topic": "/curiosity_mars_rover/odom",
+            "type": "nav_msgs/Odometry"
+          }
+        ]
+      },
+      "safety_limits": {
+        "max_linear_x": 2.0,
+        "max_angular_z": 1.0,
+        "max_duration_per_command": 30.0,
+        "command_watchdog_timeout": 0.5
+      },
+      "capabilities": [
+        "velocity_control",
+        "odom"
+      ],
+      "aliases": [
+        "curiosity_rover",
+        "msl",
+        "mars_rover"
+      ]
+    }
+  }
+}

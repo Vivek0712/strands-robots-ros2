@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Curiosity — Natural-Language Control</title>
+  <style>
+    :root { --mars:#b5532a; --bg:#1a1410; --panel:#241a14; --txt:#f3e6dc; --accent:#e07a3f; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:-apple-system,Segoe UI,Roboto,sans-serif; background:var(--bg); color:var(--txt); }
+    header { padding:14px 20px; background:linear-gradient(90deg,#3a201470,#7a3a1a40); border-bottom:1px solid #4a2f22; }
+    header h1 { margin:0; font-size:18px; } header span { color:#c9a;font-size:12px; }
+    .wrap { display:flex; gap:14px; padding:14px; height:calc(100vh - 60px); }
+    .view { flex:2; background:#000; border-radius:10px; overflow:hidden; border:1px solid #4a2f22; }
+    .view iframe { width:100%; height:100%; border:0; }
+    .panel { flex:1; min-width:320px; display:flex; flex-direction:column; gap:10px; }
+    textarea { width:100%; height:90px; resize:vertical; background:var(--panel); color:var(--txt);
+      border:1px solid #5a3a2a; border-radius:8px; padding:10px; font-size:14px; }
+    button { background:var(--accent); color:#1a1008; border:0; border-radius:8px; padding:10px 14px;
+      font-weight:600; cursor:pointer; font-size:14px; }
+    button:disabled { opacity:.5; cursor:default; }
+    .chips { display:flex; flex-wrap:wrap; gap:6px; }
+    .chips b { background:#3a261c; border:1px solid #5a3a2a; border-radius:14px; padding:4px 10px; font-size:12px;
+      font-weight:400; cursor:pointer; color:#e9cdbb; }
+    #out { flex:1; overflow:auto; background:#120d09; border:1px solid #3a261c; border-radius:8px; padding:12px;
+      white-space:pre-wrap; font-size:13px; line-height:1.45; }
+    .status { font-size:12px; color:#c9a; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🔴 Curiosity Mars Rover — talk to it</h1>
+    <span>NL → Strands Agent → strands-robots-ros2 · RosbridgeRuntime → live Gazebo rover</span>
+  </header>
+  <div class="wrap">
+    <div class="view">
+      <iframe src="http://localhost:6081/vnc.html?autoconnect=true&resize=scale&reconnect=true" title="Gazebo"></iframe>
+    </div>
+    <div class="panel">
+      <div class="chips">
+        <b onclick="fill(this)">Drive forward 5 seconds, then stop</b>
+        <b onclick="fill(this)">Turn left while moving for 4 seconds</b>
+        <b onclick="fill(this)">Drive forward 4s, turn, then report your pose</b>
+        <b onclick="fill(this)">Reverse for 3 seconds</b>
+      </div>
+      <textarea id="prompt" placeholder="Tell Curiosity what to do…">Drive forward at 1.5 m/s for 5 seconds, then stop.</textarea>
+      <button id="send" onclick="send()">▶ Send to rover</button>
+      <div class="status" id="status">Ready. The live view is on the left.</div>
+      <div id="out">Agent responses appear here.</div>
+    </div>
+  </div>
+  <script>
+    function fill(el){ document.getElementById('prompt').value = el.textContent; }
+    async function send(){
+      const p = document.getElementById('prompt').value.trim();
+      if(!p) return;
+      const btn = document.getElementById('send'), out = document.getElementById('out'), st = document.getElementById('status');
+      btn.disabled = true; st.textContent = 'Running… (watch the rover on the left)';
+      const t0 = Date.now();
+      try {
+        const res = await fetch('/prompt', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({prompt:p})});
+        const j = await res.json();
+        out.textContent = j.response || ('⚠ ' + (j.error||'unknown error'));
+        st.textContent = 'Done in ' + ((Date.now()-t0)/1000).toFixed(1) + 's.';
+      } catch(e){ out.textContent = '⚠ ' + e; st.textContent = 'Request failed.'; }
+      btn.disabled = false;
+    }
+    document.getElementById('prompt').addEventListener('keydown', e => {
+      if(e.key==='Enter' && (e.metaKey||e.ctrlKey)) send();
+    });
+  </script>
+</body>
+</html>
