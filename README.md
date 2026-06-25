@@ -1,12 +1,16 @@
 <div align="center">
 
-<img src="assets/strands-logo.png" height="46" alt="Strands"/>&nbsp;&nbsp;&nbsp;
-<img src="assets/bedrock-logo.svg" height="44" alt="Amazon Bedrock"/>&nbsp;&nbsp;&nbsp;
-<img src="assets/nasa-logo.svg" height="30" alt="NASA"/>
+<p align="center">
+  <img src="assets/strands-logo.png" alt="Strands" height="40"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="assets/bedrock-logo.svg" alt="Amazon Bedrock" height="40"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="assets/nasa-meatball.svg" alt="NASA" height="40"/>
+</p>
 
 # 🪐 Mars Curiosity Rover Agent
 
-### Type a sentence — watch a NASA Mars rover drive itself.
+### Natural Language Prompt — watch a NASA Mars rover drive itself.
 
 **A [Strands Agents](https://github.com/strands-agents/sdk-python)–powered,
 Amazon Nova LLM–driven Mars rover.** Natural-language control of a NASA Curiosity
