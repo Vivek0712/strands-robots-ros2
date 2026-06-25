@@ -183,6 +183,20 @@ speaks the same `{linear_x, angular_z}` move API — the runtime handles the wir
 > **Powered by [Strands Robots](https://github.com/strands-labs/robots)** —
 > customized by **Vivek Raja** for Mars Rover Agents and other ROS2 robots.
 
+## 📄 Paper — pending publication on arXiv
+
+> **"Design Principles of Agent-Powered Robotics Systems"** — *Vivek Raja P S* —
+> is **pending publication on [arXiv](https://arxiv.org/)**.
+
+The paper distills the design principles behind this project: the agent-tool,
+runtime, policy, and registry **seams**; the multi-transport `RuntimeAdapter`
+(ROS2/DDS, ROS1/rosbridge, HTTP, vendor web API) with its safety boundary and ROS2
+lifecycle/QoS discipline; and the **NASA Curiosity** and **AWS DeepRacer** case
+studies — all grounded in this reference implementation.
+
+The arXiv link and BibTeX entry will be added here once the preprint is live. Until
+then, please cite this repository (see [`CITATION.cff`](CITATION.cff)).
+
 ## Licensing & Use — please read
 
 This repository is **multi-licensed**, and **attribution / citation is required**
