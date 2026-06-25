@@ -1,7 +1,7 @@
 <div align="center">
 
 <img src="assets/strands-logo.png" height="46" alt="Strands"/>&nbsp;&nbsp;&nbsp;
-<img src="assets/aws-logo.svg" height="46" alt="Amazon Nova / Bedrock"/>&nbsp;&nbsp;&nbsp;
+<img src="assets/bedrock-logo.png" height="44" alt="Amazon Bedrock"/>&nbsp;&nbsp;&nbsp;
 <img src="assets/nasa-logo.svg" height="30" alt="NASA"/>
 
 # 🪐 Mars Curiosity Rover Agent
